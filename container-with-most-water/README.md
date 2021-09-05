@@ -38,7 +38,7 @@
 </ul>
 </div>
 
-Learnings:
+<p><strong>Learnings with pictorial representation: </strong></p>
 
 The first thing we should realize is that the amount of water contained is always going to be a rectangle whose area is defined as length * width. The width of any container will be the difference between the index of the two lines (i and j), and the height will be whichever of the two sides is the lowest (min(H[i], H[j])).
 
@@ -46,27 +46,27 @@ The brute force approach would be to compare every single pair of indexes in H, 
 
 This is very easily observed with the use of visuals. Let's say we start with a graph of H like this:
 
-Visual 1
+![image](https://user-images.githubusercontent.com/65392984/132114803-812cdb2f-d199-4e1c-959d-982e2e5163a1.png)
 
 The first step would be to find our starting container described by the lines on either end:
 
-Visual 2
+![image](https://user-images.githubusercontent.com/65392984/132114808-48af2ea3-2ecf-4fba-b744-0ad6fb3cde57.png)
 
 We can tell that the line on the right end will never make a better match, because any further match would have a smaller width and the container is already the maximum height that that line can support. That means that our next move should be to slide j to the left and pick a new line:
 
-Visual 3
+![image](https://user-images.githubusercontent.com/65392984/132114811-e1d24876-5e52-4f8b-90f1-eeb134a360c0.png)
 
 This is a clear improvement over the last container. We only moved over one line, but we more than doubled the height. Now, it's the line on the left end that's the limiting factor, so the next step will be to slide i to the right. Just looking at the visual, however, it's obvious that we can skip the next few lines because they're already underwater, so we should go to the first line that's larger than the current water height:
 
-Visual 4
+![image](https://user-images.githubusercontent.com/65392984/132114820-681df236-9e16-41c6-9783-2529fed575fd.png)
 
 This time, it doesn't look like we made much of a gain, despite the fact that the water level rose a bit, because we lost more in width than we made up for in height. That means that we always have to check at each new possible stop to see if the new container area is better than the current best. Just lik before we can slide j to the left again:
 
-Visual 5
+![image](https://user-images.githubusercontent.com/65392984/132114822-43f97e4e-a2f3-4560-996e-476f8f6a2a90.png)
 
 This move also doesn't appear to have led to a better container. But here we can see that it's definitely possible to have to move the same side twice in a row, as the j line is still the lower of the two:
 
-Visual 6
+![image](https://user-images.githubusercontent.com/65392984/132114826-313e5962-b09f-45ed-a673-6aa6c36df1ac.png)
 
 This is obviously the last possible container to check, and like the last few before it, it doesn't appear to be the best match. Still, we can understand that it's entirely possible for the best container in a different example to be only one index apart, if both lines are extremely tall.
 
