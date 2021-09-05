@@ -30,3 +30,9 @@
 	<li><code>0 &lt;= first &lt;= 10<sup>5</sup></code></li>
 </ul>
 </div>
+
+<p><strong>My Learning:</strong></p>
+
+1) Concept of XOR operator
+2) if a ^ b = c then b ^ c = a
+3) XOR of same numbers cancels each other 1 ^ 1 = 0 and 1 ^ 0 = 1
