@@ -33,4 +33,13 @@
 	<li><code>ruleKey</code> is equal to either <code>"type"</code>, <code>"color"</code>, or <code>"name"</code>.</li>
 	<li>All strings consist only of lowercase letters.</li>
 </ul>
+	
+<p>&nbsp;</p>
+<p><strong>My Learnings:</strong></p>
+<ul>
+	<li>How to write a switch case</li>
+	<li>Looping through List<List<String> using for each</li>
+	<li>use equals method for comparing values (Better)</li>
+</ul>
+
 </div>
