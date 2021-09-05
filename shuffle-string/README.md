@@ -47,3 +47,9 @@
 	<li><code>0 &lt;= indices[i] &lt;&nbsp;n</code></li>
 	<li>All values of <code>indices</code> are unique (i.e. <code>indices</code> is a permutation of the integers from <code>0</code> to <code>n - 1</code>).</li>
 </ul></div>
+
+<p><strong>My Learning:</strong></p>
+
+1) Concept of Character Array
+2) String.valueOf(characterArray) gives us String
+3) Concept of String.valueOf() and toCharacterArray()
