@@ -38,7 +38,7 @@
 <p><strong>My Learnings:</strong></p>
 <ul>
 	<li>How to write a switch case</li>
-	<li>Looping through List<List<String>> using for each</li>
+	<li>Looping through <code>List<List<String>></code> using for each</li>
 	<li>use equals method for comparing values (Better)</li>
 </ul>
 
