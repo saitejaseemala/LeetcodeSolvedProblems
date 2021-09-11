@@ -54,3 +54,27 @@
 	<li><code>1 &lt;= nums[i] &lt;= 20</code></li>
 </ul>
 </div>
+
+Learnings: 
+
+Why use Backtracking?
+
+One of the indicators from the description to use backtracking are the words "All subset". Looking at the constraints, the length of the input array is relatively small, so we can approach this question using brute force.
+
+General Approach
+
+Firstly, we need to generate all the possible subsets from the input array.
+Then, for all calculated subsets, calculate the XOR of all elements in each subset.
+Return the sum of all calculated XORs.
+Detailed Approach
+
+Generate all possible subsets:
+We can recursively generate all possible subsets given an array. For each element in the array, you will have two choices: Include the current element in the array in the generated subset, or withhold the current element from the generated subset.
+
+Visualization:
+![image](https://user-images.githubusercontent.com/65392984/132940208-441f5360-a3bd-43bc-87ec-1aa63f7a5d74.png)
+
+
+If we are going the step by step approach, we would store all the subsets in a list and calculate their XORs. However, this is not necessary as we can calculate the ongoing XOR total while generating the subsets. The trick is to be able to remember the state of the current xor that is calculated for each recursive step.
+
+As we are not explicitly storing the subsets in a list, we just need to return the sum of the calculated xor when the current element is considered + the calculated xor when the current element is not considered.
