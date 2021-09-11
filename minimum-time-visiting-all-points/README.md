@@ -41,3 +41,43 @@ Total time = 7 seconds</pre>
 	<li><code>-1000&nbsp;&lt;= points[i][0], points[i][1]&nbsp;&lt;= 1000</code></li>
 </ul>
 </div>
+
+Learning:
+
+Key thing to take away from the given constraints: we're calculating time (seconds) and moving diagonally takes 1 second (though it takes sqrt(2) distance units)
+To find minimum distance between two points (x1, y1) and (x2, y2):
+
+First find the difference between x-coordinates: dx = Math.abs(x1 - x2)
+Then find the difference between y-coordinates: dy = Math.abs(y1 - y2)
+Now the tricky part about diagonal traversal:
+Think of it this way: The more distance units you cover in 1 second, the less time it will take to reach the destination point.
+So for diagonal traversal, the distance covered is sqrt(2) units which is preferrable (and of course more than) compared to traversing horizontally or vertically (which are 1 unit respectively).
+So we prefer traversing diagonally from (x1, y1) until we reach on the same horizontal or vertical level of (x2, y2) (either x2 or y2)
+This can be achieved by finding the minimum diagonal steps/time/units required: diagonalSteps = Math.min(dx, dy)
+Once diagonal traversal is done, the only remaining steps would be either the difference in X-axis or Y-axis.
+So:
+remaining_x_steps = dx - diagonalSteps and,
+remaining_y_steps = dy - diagonalSteps (do note that one of them will surely be 0)
+So the total number of steps would be: minSteps = diagonalSteps + remaining_x_steps + remaining_y_steps
+Now you can rewrite the above expression and make it shorter (do follow):
+=> minSteps = Math.min(dx, dy) + dx - Math.min(dx, dy) + dy - Math.min(dx, dy)
+=> minSteps = dx + dy - Math.min(dx, dy)
+=>minSteps = Math.max(dx, dy)
+(How? If you check the previous equation, it is trying to eliminate the minimum value leaving the maximum one.
+E.g: 2 + 3 - min(2, 3) = 3 = max(2, 3))
+
+Example:
+(x1, y1) = (3, 5)
+(x2, y2) = (7, 10)
+
+dx = Math.abs(x1-x2) = 4
+dy = Math.abs(y1-y2) = 5
+Now, you would consider traversing diagonally as much as possible (because covering more distance units per second is more desirable and diagonal distance length is sqrt(2) which is greater than 1 unit if traversed horizontally or vertically)
+
+So, (3, 5) => (4, 6) => (5, 7) => (6, 8) => (7, 9) (you traversed until it matches the x-coordinate of the destination point - whichever comes first)
+
+Hence,diagonalSteps = Math.min(dx, dy) = 4 (which if see the above statement - took 4 seconds to reach)
+
+In order to reach (7,10) from (7, 9) => all you have to do is traverse vertically by 1 unit
+
+So, remaining_x_steps = 0 (dx - diagonalSteps) but remaining_y_steps = 1 (dy - diagonalSteps)
