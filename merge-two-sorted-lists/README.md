@@ -28,3 +28,33 @@
 	<li>Both <code>l1</code> and <code>l2</code> are sorted in <strong>non-decreasing</strong> order.</li>
 </ul>
 </div>
+
+Learning:
+
+                                 *LOGIC*                                 
+ We use a recurisve approach here, it requires us to make two decisions.  
+
+                  1.  When will we stop our recursion?
+
+  If l1 is null? Well we just want to return the rest of l2.
+  If l2 is null? Well we just want to return the rest of l1.
+
+                  2.  When will we call our function again?
+
+  Assume 'l1' is smaller between 'l1' and 'l2'
+  We want to set our 'res' to 'l1' and now we want to 
+  find which is smaller between 'l1.next' and 'l2'
+  So we call :   
+                  res = l1;
+                  res.next = mergeTwoLists(l1.next,l2);
+  If 'l1' is smaller.
+
+  Similarly if 'l2' is smaller 
+ We want to call : 
+                  res = l2;
+                  res.next = mergeTwoLists(l1,l2.next);
+  If 'l2' is smaller.
+
+
+  Eventually, l1 or l2 will be null, our base case will be true
+ we will return back out of our recursion building res in the process.
